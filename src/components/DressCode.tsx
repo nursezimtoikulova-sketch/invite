@@ -31,7 +31,7 @@ export function DressCode() {
                 </div>
                 <p className="mt-5 font-display text-3xl sm:text-4xl font-semibold uppercase leading-tight text-ink">
                   Майрам күнү <span className="text-red">улуттук кийим</span>{" "}
-                  киесиңиз — биз үчүн чоң сый!
+                  кийсеңиз — биз үчүн чоң сый!
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-2.5 sm:justify-start">
                   {CHIPS.map((c) => (
