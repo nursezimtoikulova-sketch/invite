@@ -1,22 +1,22 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CalendarCheck, Loader2, MessageCircle, Send } from "lucide-react";
+import {
+  CalendarCheck,
+  Loader2,
+  MessageCircle,
+  Send,
+} from "lucide-react";
+
 import { Corners, SectionHeading, Tunduk } from "./Ornament";
 import { Reveal } from "./Reveal";
 import { submitRsvp, whatsappRsvpLink } from "../lib/rsvp";
 import type { RsvpData } from "../lib/rsvp";
 
-export const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
-
-export const WHATSAPP_NUMBER = "996555737806";
-
-
 type Status = "idle" | "sending" | "success" | "error";
 
 const ATTEND_YES = "Ооба, катышып жатам";
-const ATTEND_NO = "Тилек каршы, катыша албайм";
+const ATTEND_NO = "Тилекке каршы, катыша албайм";
 
 export function RSVP() {
   const [form, setForm] = useState<RsvpData>({
@@ -26,64 +26,104 @@ export function RSVP() {
     guests: "1",
     message: "",
   });
+
   const [status, setStatus] = useState<Status>("idle");
 
-  const set = (k: keyof RsvpData) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
+  const set = (key: keyof RsvpData) => (value: string) => {
+    setForm((previous) => ({
+      ...previous,
+      [key]: value,
+    }));
+  };
 
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault();
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
     if (status === "sending") return;
+
     setStatus("sending");
+
     try {
       await submitRsvp(form);
       setStatus("success");
-    } catch {
+    } catch (error) {
+      console.error("RSVP submission error:", error);
       setStatus("error");
     }
   }
 
   return (
-    <section id="rsvp" className="relative overflow-hidden bg-red-deep py-18 sm:py-24 pattern-red">
+    <section
+      id="rsvp"
+      className="relative overflow-hidden bg-red-deep py-18 sm:py-24 pattern-red"
+    >
       <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-gold/15 blur-3xl" />
+
       <div className="relative mx-auto max-w-3xl px-5 py-6 sm:py-0">
         <Reveal>
-          <SectionHeading light eyebrow="Меймандын анкетасы" title="Катышууңузду тактаңыз" />
+          <SectionHeading
+            light
+            eyebrow="Меймандын анкетасы"
+            title="Катышууңузду тактаңыз"
+          />
+
           <p className="mx-auto mt-4 max-w-md text-center text-sm leading-relaxed text-paper/75">
-            Форманы толтуруңуз — жообуңуз дароо мектептин жооптуу кишисине
-            жетет. Биз үчүн эң маанилүүсү — сиздин келишиңиз!
+            Форманы толтуруңуз — жообуңузду кабыл алууга аракет кылабыз.
+            Биз үчүн эң маанилүүсү — сиздин келишиңиз!
           </p>
         </Reveal>
 
         <Reveal delay={0.12} className="mt-10">
           <div className="relative bg-paper shadow-[0_34px_80px_-30px_rgba(0,0,0,0.5)]">
-            <div className="absolute inset-2.5 hairline-red pointer-events-none" />
+            <div className="pointer-events-none absolute inset-2.5 hairline-red" />
+
             <Corners />
+
             <div className="relative p-8 sm:p-12">
               <AnimatePresence mode="wait">
                 {status === "success" ? (
                   <motion.div
-                    key="ok"
+                    key="success"
                     initial={{ opacity: 0, scale: 0.94 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                     className="py-6 text-center"
                   >
                     <motion.div
                       initial={{ rotate: -180, opacity: 0 }}
                       animate={{ rotate: 0, opacity: 1 }}
-                      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                       className="mx-auto w-max"
                     >
                       <Tunduk className="h-16 w-16 text-red" />
                     </motion.div>
+
                     <h3 className="mt-6 font-display text-4xl font-semibold uppercase text-ink">
                       Рахмат!
                     </h3>
+
                     <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-soft">
-                      Жообуңуз мектепке жетти. Сизди жана үй-бүлөңүздү
-                      31-октябрда саат 10:00дө чын жүрөктөн күтөбүз!
+                      Анкета жөнөтүү өтүнүчү аткарылды. Google Sheets
+                      таблицасынан жооптун сакталганын текшерүү керек.
+                      Сизди жана үй-бүлөңүздү 31-октябрда саат 10:00дө
+                      чын жүрөктөн күтөбүз!
                     </p>
+
                     <CalendarCheck className="mx-auto mt-6 h-6 w-6 text-gold" />
+
+                    <button
+                      type="button"
+                      onClick={() => setStatus("idle")}
+                      className="mt-6 text-sm font-bold text-red underline"
+                    >
+                      Анкетаны кайра толтуруу
+                    </button>
                   </motion.div>
                 ) : (
                   <motion.form
@@ -98,25 +138,34 @@ export function RSVP() {
                         <span className="text-[0.64rem] font-bold uppercase tracking-[0.26em] text-ink-soft">
                           Аты-жөнүңүз *
                         </span>
+
                         <input
                           required
                           value={form.name}
-                          onChange={(e) => set("name")(e.target.value)}
+                          onChange={(event) =>
+                            set("name")(event.target.value)
+                          }
                           className="field mt-1"
                           placeholder="Айперке (мисалы)"
+                          autoComplete="name"
                         />
                       </label>
+
                       <label className="block">
                         <span className="text-[0.64rem] font-bold uppercase tracking-[0.26em] text-ink-soft">
                           Телефонуңуз *
                         </span>
+
                         <input
                           required
                           type="tel"
                           value={form.phone}
-                          onChange={(e) => set("phone")(e.target.value)}
+                          onChange={(event) =>
+                            set("phone")(event.target.value)
+                          }
                           className="field mt-1"
                           placeholder="+996 ___ __ __ __"
+                          autoComplete="tel"
                         />
                       </label>
                     </div>
@@ -125,19 +174,21 @@ export function RSVP() {
                       <span className="text-[0.64rem] font-bold uppercase tracking-[0.26em] text-ink-soft">
                         Майрамга катышасызбы? *
                       </span>
+
                       <div className="mt-3 flex flex-wrap gap-3">
-                        {[ATTEND_YES, ATTEND_NO].map((opt) => (
+                        {[ATTEND_YES, ATTEND_NO].map((option) => (
                           <button
-                            key={opt}
+                            key={option}
                             type="button"
-                            onClick={() => set("attendance")(opt)}
+                            aria-pressed={form.attendance === option}
+                            onClick={() => set("attendance")(option)}
                             className={`rounded-full border px-5 py-2.5 text-[0.72rem] font-bold uppercase tracking-[0.14em] transition-all ${
-                              form.attendance === opt
+                              form.attendance === option
                                 ? "border-red bg-red text-paper shadow-[0_10px_24px_-10px_rgba(166,28,44,0.6)]"
                                 : "border-gold/50 text-ink-soft hover:border-gold"
                             }`}
                           >
-                            {opt}
+                            {option}
                           </button>
                         ))}
                       </div>
@@ -148,41 +199,48 @@ export function RSVP() {
                         <span className="text-[0.64rem] font-bold uppercase tracking-[0.26em] text-ink-soft">
                           Канча киши келесиздер? *
                         </span>
+
                         <select
                           value={form.guests}
-                          onChange={(e) => set("guests")(e.target.value)}
+                          onChange={(event) =>
+                            set("guests")(event.target.value)
+                          }
                           className="field mt-1 cursor-pointer appearance-none"
                         >
-                          {[1, 2, 3, 4, 5, 6].map((n) => (
-                            <option key={n} value={n}>
-                              {n} киши
+                          {[1, 2, 3, 4, 5, 6].map((number) => (
+                            <option key={number} value={number}>
+                              {number} киши
                             </option>
                           ))}
                         </select>
                       </label>
+
                       <label className="block">
                         <span className="text-[0.64rem] font-bold uppercase tracking-[0.26em] text-ink-soft">
                           Кошумча билдирүү
                         </span>
+
                         <input
                           value={form.message}
-                          onChange={(e) => set("message")(e.target.value)}
+                          onChange={(event) =>
+                            set("message")(event.target.value)
+                          }
                           className="field mt-1"
-                          placeholder="Каалооңуз жанасы…"
+                          placeholder="Каалооңуз жана сунушуңуз..."
                         />
                       </label>
                     </div>
 
                     {status === "error" && (
-                      <motion.p
+                      <motion.div
                         initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="rounded-xl border border-red/40 bg-red/5 px-4 py-3 text-center text-[0.82rem] leading-relaxed text-red"
                       >
-                        Кешириңиз, жөнөтүүдө ката кетти. {`WhatsApp (${WHATSAPP_DISPLAY})`}
-                        аркылуу жибериңиз же кайра аракет кылыңыз — анкетаниңыз
-                        ошол жерден жетет.
-                      </motion.p>
+                        Жөнөтүүдө ката кетти же сервердин жообун текшерүү
+                        мүмкүн болгон жок. Анкетаны WhatsApp аркылуу
+                        жөнөтүп көрүңүз.
+                      </motion.div>
                     )}
 
                     <div className="flex flex-col items-center gap-4 pt-2">
@@ -194,7 +252,7 @@ export function RSVP() {
                         {status === "sending" ? (
                           <>
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            Жөнөтүүлүп жатат…
+                            Жөнөтүлүп жатат…
                           </>
                         ) : (
                           <>
@@ -203,6 +261,7 @@ export function RSVP() {
                           </>
                         )}
                       </button>
+
                       <a
                         href={whatsappRsvpLink(form)}
                         target="_blank"
@@ -220,6 +279,3 @@ export function RSVP() {
           </div>
         </Reveal>
       </div>
-    </section>
-  );
-}
