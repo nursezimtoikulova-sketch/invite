@@ -14,7 +14,7 @@ export async function submitRsvp(data: RsvpData): Promise<void> {
     throw new Error("NO_ENDPOINT");
   }
 
-  const response = await fetch(APPS_SCRIPT_URL, {
+  await fetch(APPS_SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -22,12 +22,6 @@ export async function submitRsvp(data: RsvpData): Promise<void> {
     },
     body: JSON.stringify(data),
   });
-
-  // При no-cors браузер не позволяет прочитать ответ Apps Script.
-  // Поэтому здесь нельзя проверить, сохранилась ли строка.
-  if (!response || response.type !== "opaque") {
-    throw new Error("REQUEST_FAILED");
-  }
 }
 
 export function whatsappRsvpLink(data: RsvpData): string {
