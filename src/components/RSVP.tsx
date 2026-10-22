@@ -279,3 +279,6 @@ export function RSVP() {
           </div>
         </Reveal>
       </div>
+    </section>
+  );
+}
