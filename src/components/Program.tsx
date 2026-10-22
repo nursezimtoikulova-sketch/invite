@@ -8,7 +8,7 @@ export function Program() {
       <div className="mx-auto max-w-4xl px-5">
         <Reveal>
           <SectionHeading
-            eyebrow="31-октябрь · саат 10:00дө"
+            eyebrow="31-октябрь · саат 10:00до"
             title="Иш-чаранын программасы"
           />
           <p className="mx-auto mt-4 max-w-lg text-center font-display text-2xl sm:text-3xl font-medium italic text-red">
