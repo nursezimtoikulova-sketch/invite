@@ -6,7 +6,7 @@ import { Corners, SectionHeading, Tunduk } from "./Ornament";
 import { Reveal } from "./Reveal";
 import { submitRsvp, whatsappRsvpLink } from "../lib/rsvp";
 import type { RsvpData } from "../lib/rsvp";
-import { WHATSAPP_DISPLAY } from "../config";
+import { APPS_SCRIPT_URL, WHATSAPP_NUMBER } from "../config";
 
 type Status = "idle" | "sending" | "success" | "error";
 
