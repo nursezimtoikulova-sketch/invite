@@ -2,20 +2,7 @@
 export const APPS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
 
-export const WHATSAPP_NUMBER = "996XXXXXXXXX";
-/* ============================================================
-   «ТЕҮРНҮҮ» — БУЛ ЖЕРДЕН БАРДЫК МААЛЫМАТТЫ ОҢДОЙ АЛАСЫЗ
-   (дата, программа, дарек, RSVP-анкета, музыка)
-   ============================================================ */
-
-/* --- 1. RSVP анкетаны Google Таблица менен байланыштыруу ---
-   Google Apps Script'иңиздин "Web App" дарегин ушул жерге коңуз.
-   (Apps Script → Deploy → New deployment → Web app → "Anyone" → Deploy)
-   Мисал: https://script.google.com/macros/s/AKfycbx.../exec  */
-
-export const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
-export const SPREADSHEET_ID = "1D4AnN5XVvhvlBqP9HuZZ8bQ392UHI89cnwy3njjA2A";
+export const WHATSAPP_NUMBER = "996555737806";
 
 /* --- 2. Байланыш --- */
 export const WHATSAPP_NUMBER = "996555737806";
