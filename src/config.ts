@@ -1,3 +1,8 @@
+
+export const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
+
+export const WHATSAPP_NUMBER = "996XXXXXXXXX";
 /* ============================================================
    «ТЕҮРНҮҮ» — БУЛ ЖЕРДЕН БАРДЫК МААЛЫМАТТЫ ОҢДОЙ АЛАСЫЗ
    (дата, программа, дарек, RSVP-анкета, музыка)
@@ -7,8 +12,9 @@
    Google Apps Script'иңиздин "Web App" дарегин ушул жерге коңуз.
    (Apps Script → Deploy → New deployment → Web app → "Anyone" → Deploy)
    Мисал: https://script.google.com/macros/s/AKfycbx.../exec  */
-export const APPS_SCRIPT_URL = "";
 
+export const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
 export const SPREADSHEET_ID = "1D4AnN5XVvhvlBqP9HuZZ8bQ392UHI89cnwy3njjA2A";
 
 /* --- 2. Байланыш --- */
@@ -17,7 +23,7 @@ export const WHATSAPP_DISPLAY = "+996 555 73 78 06";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 /* --- 3. Дарек --- */
-export const SCHOOL_NAME = "«Нур Аиша» жеке мектеби";
+export const SCHOOL_NAME = "«НурАиша» жеке мектеби";
 export const CITY_LINE = "Бишкек шаары";
 export const MAP_2GIS =
   "https://2gis.kg/bishkek/geo/70000001029657628/74.632814,42.905017";
