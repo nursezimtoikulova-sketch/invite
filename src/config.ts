@@ -1,6 +1,6 @@
 
 export const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
+  "https://script.google.com/macros/s/AKfycbzqv0EaIhrJZOKNIdsdxChojht9_qAFqG2AdhMww8pkT9ddqbCygpwPG5gFSm5OgtaM1w/exec";
 
 
 /* --- 2. Байланыш --- */
