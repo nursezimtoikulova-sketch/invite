@@ -14,9 +14,9 @@ export function Greeting() {
         </Reveal>
         <Reveal delay={0.12}>
           <p className="mt-8 font-display text-3xl sm:text-[2.6rem] font-medium leading-snug text-ink">
-            31-октябрда мектебибиз{" "}
+            31-октябрь күнү өтө турган{" "}
             <span className="italic text-red">«Улуттук дем»</span> аттуу маданий
-            иш-чарарбызда  сыйлуу коногубуз болуп кетүүгө чакырабыз . {" "}
+            иш-чарарбыздын  сыйлуу коногу болуп кетүүгө чакырабыз . {" "}
         
           
           </p>
