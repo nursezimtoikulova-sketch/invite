@@ -6,7 +6,12 @@ import { Corners, SectionHeading, Tunduk } from "./Ornament";
 import { Reveal } from "./Reveal";
 import { submitRsvp, whatsappRsvpLink } from "../lib/rsvp";
 import type { RsvpData } from "../lib/rsvp";
-import { APPS_SCRIPT_URL, WHATSAPP_NUMBER } from "../config";
+
+export const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
+
+export const WHATSAPP_NUMBER = "996555737806";
+
 
 type Status = "idle" | "sending" | "success" | "error";
 
