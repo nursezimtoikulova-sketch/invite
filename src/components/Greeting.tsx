@@ -16,7 +16,7 @@ export function Greeting() {
           <p className="mt-8 font-display text-3xl sm:text-[2.6rem] font-medium leading-snug text-ink">
             31-октябрь күнү өтө турган{" "}
             <span className="italic text-red">«Улуттук дем»</span> аттуу маданий
-            иш-чарарбыздын  сыйлуу коногу болуп кетүүгө чакырабыз . {" "}
+            иш-чарабыздын  сыйлуу коногу болуп кетүүгө чакырабыз . {" "}
         
           
           </p>
