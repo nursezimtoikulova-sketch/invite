@@ -2,7 +2,6 @@
 export const APPS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwlDUFSful_opcQHOUtimR1jirSjdk5AmMG_ZDahfkYkM4DtfiIs62-dqhaHzUbJEHAmw/exec";
 
-export const WHATSAPP_NUMBER = "996555737806";
 
 /* --- 2. Байланыш --- */
 export const WHATSAPP_NUMBER = "996555737806";
