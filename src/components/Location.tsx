@@ -8,7 +8,7 @@ export function Location() {
     <section id="place" className="relative py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-5">
         <Reveal>
-          <SectionHeading eyebrow="Бизди табыңыз" title="Дайре жана дарек" />
+          <SectionHeading eyebrow="Бизди табыңыз" title="Дареги" />
         </Reveal>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-5">
@@ -49,7 +49,7 @@ export function Location() {
           <Reveal delay={0.15} className="lg:col-span-3">
             <div className="h-full overflow-hidden rounded-[2rem] border border-gold/50 p-2 shadow-[var(--shadow-card)]">
               <iframe
-                title="«Нур Аиша» мектебинин дареги"
+                title="«НурАиша» мектебинин дареги"
                 src={MAP_EMBED}
                 className="h-[24rem] w-full rounded-[1.6rem] border-0 sm:h-full"
                 loading="lazy"
